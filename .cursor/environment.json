@@ -1,0 +1,14 @@
+{
+  "name": "grok_bot_repo",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "install": "./scripts/install.sh",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "source .venv/bin/activate && PORT=5000 python -m flask --app grok_bot.app:app run --host 0.0.0.0 --port 5000"
+    }
+  ],
+  "ports": [5000]
+}

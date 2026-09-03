@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grok Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="brand">
+          <span class="logo">⚡</span>
+          <div>
+            <h1>Grok Bot</h1>
+            <p class="model">model: {{ model }}</p>
+          </div>
+        </div>
+        <span class="badge {{ 'offline' if offline else 'online' }}">
+          {{ 'offline mode' if offline else 'online' }}
+        </span>
+      </header>
+
+      <main id="messages" class="messages" aria-live="polite">
+        <div class="msg bot">
+          <div class="bubble">
+            Hi! I'm Grok.{% if offline %} I'm running in offline mode — set
+            <code>XAI_API_KEY</code> to reach the real xAI API.{% endif %}
+            Ask me anything.
+          </div>
+        </div>
+      </main>
+
+      <form id="chat-form" class="composer" autocomplete="off">
+        <input
+          id="input"
+          class="input"
+          type="text"
+          placeholder="Type a message…"
+          aria-label="Message"
+          required
+        />
+        <button id="send" class="send" type="submit">Send</button>
+      </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
